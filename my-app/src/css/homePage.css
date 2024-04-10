@@ -1,0 +1,6 @@
+.contains{
+    flex: 1;
+    display: block;
+    flex-direction: row;
+    
+}

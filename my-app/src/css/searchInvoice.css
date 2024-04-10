@@ -1,0 +1,28 @@
+.contains{
+    flex: 1;
+    padding: 20px;
+}
+.title-page{
+    text-align:center;
+    font-size: 50px;
+    font-weight: bold;
+}
+.search-contains{
+    display:flex;
+    justify-content: space-around;
+}
+.table-invoice{
+    margin-top: 50px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    text-align: center;
+    font-size: 30px;
+
+}
+td{
+    text-align: center;
+    padding: 0px 15px;
+}

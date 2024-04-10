@@ -1,0 +1,136 @@
+info:
+  title: Sample API
+  version: 1.0.0
+openapi: 3.0.0
+paths:
+  /CourseRegister:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                CreditClass:
+                  type: long
+                studentId:
+                  type: long
+              type: object
+        required: true
+      responses:
+        '200':
+          description: "\u0110\u0103ng k\xFD th\xE0nh c\xF4ng"
+        '400':
+          description: "Kh\xF4ng th\xE0nh c\xF4ng"
+      summary: Start service
+  /CreditClass/emptySlots:
+    get:
+      parameters:
+      - in: path
+        name: creditClassId
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  numOfslotEmpty:
+                    type: integer
+                type: object
+          description: Successful operation
+        '404':
+          description: Subject not found
+      summary: "L\u1EA5y s\u1ED1 l\u01B0\u1EE3ng th\xF4ng tin c\xF2n tr\u1ED1ng"
+  /CreditClass/updateEmptySlots/{creditClassId}:
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                creditClassId:
+                  type: integer
+              type: object
+        required: true
+      responses:
+        '200':
+          description: "C\u1EADp nh\u1EADt s\u1ED1 l\u01B0\u1EE3ng ch\u1ED7 tr\u1ED1\
+            ng th\xE0nh c\xF4ng"
+        '400':
+          description: Bad request
+      summary: "C\u1EADp nh\u1EADt s\u1ED1 l\u01B0\u1EE3ng ch\u1ED7 tr\u1ED1ng trong\
+        \ l\u1EDBp t\xEDn ch\u1EC9"
+  /student/updateTuitionFee:
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                tuitionFee:
+                  type: integer
+              type: object
+        required: true
+      responses:
+        '200':
+          description: Tuition fee updated successfully
+        '400':
+          description: Bad request
+      summary: Update student's tuition fee
+  /subject/{subjectId}:
+    get:
+      parameters:
+      - in: path
+        name: subjectId
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  prerequisiteSubjectId:
+                    type: integer
+                type: object
+          description: Successful operation
+        '404':
+          description: Subject not found
+      summary: Get prerequisite subject ID by ID
+/SubjectRegistration/:
+    post:
+      summary: Thêm đăng ký môn học
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                creditClassId:
+                  type: integer
+                  description: ID của lớp tín chỉ
+      responses:
+        '200':
+          description: Đã thêm đăng ký môn học thành công
+        '400':
+          description: Yêu cầu không hợp lệ
+
+  /SubjectRegistration/{registrationId}:
+    get:
+      summary: Lấy thông tin chi tiết đăng ký môn học
+      parameters:
+        - in: path
+          name: registrationId
+          required: true
+          schema:
+            type: integer
+            description: ID của đăng ký môn học
+      responses:
+        '200':
+          description: Thông tin chi tiết về đăng ký môn học đã được lấy thành công
+        '400':
+          description: Yêu cầu không hợp lệ

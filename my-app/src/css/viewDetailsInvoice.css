@@ -1,0 +1,14 @@
+.contains{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.info_customer{
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+}
+.table_cal{
+    display: block;
+    margin-right: 40px;    
+}
